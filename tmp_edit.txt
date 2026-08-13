@@ -1,0 +1,22 @@
+  const [expectedOtp, setExpectedOtp] = useState<string | null>(null);
+  const [isSendingSms, setIsSendingSms] = useState(false);
+
+  const handleSetupPin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log(`[App] handleSetupPin triggered. Current step: ${setupStep}`);
+
+    if (setupStep === 'mobile') {
+      console.log(`[App] Validating mobile number: ${setupMobile}`);
+      if (setupMobile.length === 10) {
+        setIsSendingSms(true);
+        const otp = SmsService.generateOtp();
+        setExpectedOtp(otp);
+        console.log(`[App] Expected OTP set in state. Calling SmsService...`);
+
+        try {
+          const response = await SmsService.sendSms({
+            to: `+91 ${setupMobile}`,
+            message: `${otp} is your SwiftPay registration code.`
+          });
+          console.log(`[App] SmsService response:`, response);
+          setSetupStep('otp');
