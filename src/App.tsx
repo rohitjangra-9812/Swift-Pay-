@@ -741,7 +741,7 @@ return (
       </nav>
 
       {/* Conditional View Logic */}
-      <main className="flex-1 overflow-x-hidden p-4 sm:p-8">
+      <main className="flex-1 overflow-x-hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -770,13 +770,13 @@ return (
             }} />}
             
             {currentPage === 'gateway' && (
-              <div className="max-w-4xl mx-auto h-full">
+              <div className="w-full h-full">
                 <SwiftPayGateway onBack={() => setCurrentPage("panel")} />
               </div>
             )}
             
             {currentPage === 'utilities' && (
-              <div className="max-w-4xl mx-auto">
+              <div className="w-full h-full">
                 
               </div>
             )}

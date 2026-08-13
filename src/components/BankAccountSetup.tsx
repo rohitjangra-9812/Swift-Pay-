@@ -60,7 +60,7 @@ export const BankAccountSetup = ({ onComplete }: { onComplete: (details: { name:
   };
 
   return (
-    <div className="max-w-md mx-auto bg-slate-950 text-white min-h-[600px] relative rounded-3xl shadow-2xl border border-slate-900 overflow-hidden flex flex-col p-8">
+    <div className="w-full h-full bg-slate-950 text-white relative overflow-y-auto overflow-x-hidden flex flex-col p-6 sm:p-12">
       
       {/* Header */}
       <div className="flex flex-col items-center justify-center mb-8 mt-4">

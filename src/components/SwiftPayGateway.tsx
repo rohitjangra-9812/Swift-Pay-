@@ -57,7 +57,7 @@ export const SwiftPayGateway = ({ onBack }: { onBack?: () => void }) => {
 
   if (paymentState === 'success') {
     return (
-      <div className="max-w-md mx-auto min-h-[80vh] flex flex-col items-center justify-center p-6 bg-slate-950 text-white rounded-3xl border border-slate-800 shadow-2xl relative overflow-hidden">
+      <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-slate-950 text-white relative overflow-hidden">
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -93,8 +93,8 @@ export const SwiftPayGateway = ({ onBack }: { onBack?: () => void }) => {
   }
 
   return (
-    <div className="max-w-md mx-auto bg-slate-950 text-white rounded-3xl shadow-2xl border border-slate-900 relative min-h-screen pb-28">
-      <div className="p-6">
+    <div className="w-full bg-slate-950 text-white relative h-full pb-28 overflow-y-auto overflow-x-hidden">
+      <div className="p-6 sm:p-12">
         {onBack && (
           <button 
             onClick={onBack}
@@ -197,8 +197,8 @@ export const SwiftPayGateway = ({ onBack }: { onBack?: () => void }) => {
       </div>
 
       {/* Sticky Bottom Action */}
-      <div className="fixed bottom-0 left-0 w-full p-4 bg-gradient-to-t from-slate-950 via-slate-950 to-transparent pt-12 z-10 flex justify-center pointer-events-none">
-        <div className="max-w-md w-full pointer-events-auto">
+      <div className="fixed bottom-0 left-0 w-full p-4 sm:p-8 bg-gradient-to-t from-slate-950 via-slate-950 to-transparent pt-12 z-10 flex justify-center pointer-events-none">
+        <div className="w-full pointer-events-auto">
           <button 
             onClick={handlePay}
             disabled={paymentState === 'processing'}

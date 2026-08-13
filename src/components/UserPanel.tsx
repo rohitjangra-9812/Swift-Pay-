@@ -538,16 +538,16 @@ export const UserPanel = ({
 
   const getThemeClasses = () => {
     switch(theme) {
-      case 'indigo': return 'bg-indigo-950 border-indigo-900';
-      case 'emerald': return 'bg-emerald-950 border-emerald-900';
-      case 'rose': return 'bg-rose-950 border-rose-900';
-      case 'cyan': return 'bg-cyan-950 border-cyan-900';
-      default: return 'bg-slate-950 border-slate-900';
+      case 'indigo': return 'bg-indigo-950';
+      case 'emerald': return 'bg-emerald-950';
+      case 'rose': return 'bg-rose-950';
+      case 'cyan': return 'bg-cyan-950';
+      default: return 'bg-slate-950';
     }
   };
 
   return (
-    <div className={`max-w-md mx-auto text-white min-h-screen relative rounded-3xl shadow-2xl border pb-20 overflow-hidden transition-colors duration-500 ${getThemeClasses()}`}>
+    <div className={`w-full h-full text-white relative pb-20 overflow-y-auto overflow-x-hidden transition-colors duration-500 ${getThemeClasses()}`}>
       <VoiceAssistant onCommand={handleVoiceCommand} />
       {/* Pending Request Modal */}
       {pendingRequest && !activeAction && !isProcessing && !paymentSuccess && (

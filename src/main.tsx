@@ -12,6 +12,15 @@ window.addEventListener('beforeinstallprompt', (e) => {
 });
 
 
+// Suppress benign Vite HMR websocket connection errors in AI Studio preview
+const originalConsoleError = console.error;
+console.error = (...args: any[]) => {
+  if (typeof args[0] === 'string' && args[0].includes('[vite]')) {
+    return;
+  }
+  originalConsoleError.apply(console, args);
+};
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HashRouter>
