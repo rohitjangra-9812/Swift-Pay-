@@ -42,6 +42,32 @@ export default function App() {
   const [isAppUnlocked, setIsAppUnlocked] = useState(false);
   const [sessionExpiry, setSessionExpiry] = useState<number | null>(null);
   const [isBlocked, setIsBlocked] = useState(false);
+  const [logoClickCount, setLogoClickCount] = useState(0);
+
+  const handleSecretLogoClick = () => {
+    setLogoClickCount(prev => {
+      const next = prev + 1;
+      if (next >= 7) {
+        setCurrentPage('admin');
+        toast.success("Admin Gateway Unlocked");
+        return 0;
+      }
+      return next;
+    });
+    setTimeout(() => setLogoClickCount(0), 3000);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'a') {
+        e.preventDefault();
+        setCurrentPage('admin');
+        toast.success("Admin Portal Unlocked");
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
 
 
@@ -702,7 +728,7 @@ return (
       <QuickHelpModal isOpen={isHelpOpen} onClose={() => setIsHelpOpen(false)} bankAccounts={bankAccounts} />
       {/* Main Navigation */}
       <nav className="flex items-center justify-between px-4 sm:px-8 py-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
-        <div className="flex items-center gap-2 cursor-pointer">
+        <div className="flex items-center gap-2 cursor-pointer select-none" onClick={handleSecretLogoClick} title="">
           <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
              <ShieldCheck className="w-5 h-5 text-white" />
           </div>

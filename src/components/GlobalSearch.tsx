@@ -3,7 +3,7 @@ import { Search, X, ArrowUpRight, ArrowDownLeft, Calendar } from 'lucide-react';
 import { formatCurrency } from '../utils/formatCurrency';
 import { formatDate } from '../utils/formatDate';
 
-export const GlobalSearch = ({ onResultClick, onAdminAccess }: { onResultClick?: (tx: any) => void, onAdminAccess?: () => void }) => {
+export const GlobalSearch = ({ onResultClick }: { onResultClick?: (tx: any) => void }) => {
   const [query, setQuery] = useState("");
   const [transactions, setTransactions] = useState<any[]>([]);
   const [isFocused, setIsFocused] = useState(false);
@@ -49,10 +49,6 @@ export const GlobalSearch = ({ onResultClick, onAdminAccess }: { onResultClick?:
           onChange={(e) => {
             const val = e.target.value;
             setQuery(val);
-            if (val === "#ADMIN" && onAdminAccess) {
-              setQuery("");
-              onAdminAccess();
-            }
           }}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setTimeout(() => setIsFocused(false), 200)}

@@ -984,7 +984,7 @@ export const UserPanel = ({
       </div>
 
       <div className="p-5 space-y-8 overflow-y-auto h-[calc(100vh-200px)]">
-        <GlobalSearch onAdminAccess={() => { document.dispatchEvent(new CustomEvent("trigger_admin")); }} />
+        <GlobalSearch />
 
         {/* Bank Dashboard */}
         <div className="bg-gradient-to-br from-indigo-900/80 to-slate-900 border border-indigo-800/50 rounded-3xl p-5 shadow-lg relative overflow-hidden">
